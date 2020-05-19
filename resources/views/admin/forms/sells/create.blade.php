@@ -8,32 +8,35 @@
     <div class= "col-md-10" >
         <h2>Sell Books</h2>
         <p>Fill the form to sell your books.</p>
-        <form action="" method="post">
+        <form action="{{route('sells.store')}}" method="post">
+            @csrf
             <div class="form-group col-md-6">
                 <label>Book name:</label>
-                <input type="text" class="form-control" id="book_name">
+                <input type="text" class="form-control" name="title">
+                {{$errors->first('title')}}
             </div>
             <div class="form-group col-md-6">
                 <label>Category</label>
-                    <select class="form-control" id="">
+                    <select class="form-control" name="category">
                         <option>School</option>
                         <option>+2</option>
                         <option>A Level</option>
-                        <option>Bachelors</option>
                         <option>Comics</option>
                     </select>
             </div>
             <div class="form-group col-md-6">
-                <label>Publisher</label>
-                <input type="publisher" class="form-control" id="publisher">
+                <label>Author</label>
+                <input type="text" class="form-control" name="author">
+                {{$errors->first('author')}}
             </div>
             <div class="form-group col-md-6">
                 <label>Price:</label>
-                <input type="text" class="form-control" id="phone_number">
+                <input type="text" class="form-control" name="price">
+                {{$errors->first('price')}}
             </div>
             <div class="form-group col-md-6">
                 <label>Condition of Book</label>
-                    <select class="form-control" id="">
+                    <select class="form-control" name="condition">
                         <option>First Hand</option>
                         <option>Second Hand</option>
                     </select>

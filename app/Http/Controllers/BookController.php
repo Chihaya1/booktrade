@@ -6,6 +6,7 @@ use App\Book;
 use Auth;
 use Illuminate\Http\Request;
 
+
 class BookController extends Controller
 {
     /**
@@ -17,7 +18,8 @@ class BookController extends Controller
     {
         // lists dekhau cha
         $books = Book::all();
-        // return $books;
+        return $books;
+        // return view('admin.books.index',compact('books'));
         
     }
 
@@ -40,9 +42,13 @@ class BookController extends Controller
     public function store(Request $request)
     {
         // validation
-        request()->validate([
-
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        $request->validate([
+            'title'      => 'required|unique:books|max:255',
+            'isbn'       => 'required|unique:books|max:13',
+            'author'     =>'required',
+            'description'=>'required',
+            'price'      =>'required',
+            'image'      => 'required|image|mimes:jpeg,png,jpg|max:2048',
 
         ]);
 
@@ -50,20 +56,22 @@ class BookController extends Controller
         $book = new Book;
         // $imagename = $request->file('file');
         $imagename = $request->image->getClientOriginalName();
-
         $book->title = $request->title;
+        $book->user_id = Auth::user()->id;
+        // $book->category_id = $request->category_id;
         $book->isbn = $request->isbn;
         $book->author = $request->author;
         $book->description = $request->description;
         $book->price = $request->price;
-        $book->user_id = Auth::user()->id;
-         $book->image = $imagename;
+        $book->image = $imagename;
         $request->image->move(public_path('images'),$imagename);
 
         // return $request;
 
-         $book->save();
-        // return redirect('/books')->with('status','Record saved');
+        $book->save();
+        $categories = Category::find($request->category_id);
+        $book->categories()->attach($categories);
+        return redirect('/books.create')->with('status','Record saved');
     }
 
     /**

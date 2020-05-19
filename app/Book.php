@@ -14,6 +14,16 @@ class Book extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'email', 'password',
+        'user_id','isbn','title','author','description','price','image',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo('Category::class');
+    }
+    public function user()
+        {
+            return $this->belongsTo('User::class');
+        }
+    
 }

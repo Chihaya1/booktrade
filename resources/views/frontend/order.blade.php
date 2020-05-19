@@ -13,23 +13,31 @@
             <form action="" method="post">
                 <div class="form-group col-md-6">
                     <label>Book Name:</label>
-                    <input type="name" class="form-control" id="book_name">
+                    <input type="name" class="form-control" name="title">
                 </div>
                 <div class="form-group col-md-6">
-                    <label>Name:</label>
-                    <input type="name" class="form-control" id="name">
+                    <label>First Name:</label>
+                    <input type="name" class="form-control" name="first_name">
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Last Name:</label>
+                    <input type="name" class="form-control" name="last_name">
                 </div>
                 <div class="form-group col-md-6">
                     <label>Email:</label>
-                    <input type="email" class="form-control" id="email">
+                    <input type="email" class="form-control" name="email">
                 </div>
                 <div class="form-group col-md-6">
                     <label>Phone number:</label>
-                    <input type="text" class="form-control" id="phone_number">
+                    <input type="text" class="form-control" name="phone_number">
                 </div>
                 <div class="form-group col-md-6">
                     <label>Address:</label>
-                    <input type="address" class="form-control" id="address">
+                    <input type="address" class="form-control" name="address">
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Quantity:</label>
+                    <input type="address" class="form-control" name="quantity">
                 </div>
                 <button type="submit" class="btn btn-dark">Submit</button>
             </form><br>

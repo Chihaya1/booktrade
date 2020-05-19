@@ -7,12 +7,37 @@
             <ul class="list-group">
                 <li class="list-group-item active">Dashboard</li>
                     <li class="list-group-item">
-                        <a href="#">Books</a>
+                        <a href="{{route('books.create')}}">Add Books</a>
 
                     </li>
                     <li class="list-group-item">
-                        <a href="#">Order</a>
+                        <a href="{{route('books.index')}}">View all Books</a>
+
                     </li>
+                    <li class="list-group-item">
+                        <a href="{{route('categories.create')}}">Add Categories</a>
+
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{{route('categories.index')}}">View all Categories</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{{route('contacts.index')}}">View all Contacts</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{{route('orders.index')}}">View all Orders</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{{route('deposits.index')}}">View all Deposits</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{{route('donates.index')}}">View all Donates</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{{route('sells.index')}}">View all Sales</a>
+                    </li>
+                    
+
                 <!-- Products -->
                     <li class="list-group-item">
                         <a href="#">Add new Users</a>

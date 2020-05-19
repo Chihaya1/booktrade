@@ -24,17 +24,12 @@ Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/home', 'FrontendController@home')->name('home');
 Route::get('/books', 'FrontendController@books')->name('books');
 Route::get('/book', 'FrontendController@book')->name('book');
-Route::get('/deposit', 'FrontendController@deposit')->name('deposit');
 Route::get('/donation', 'FrontendController@donation')->name('donation');
-Route::get('/sell', 'FrontendController@sell')->name('sell');
-// Route::get('/admin', 'FrontendController@admin')->name('admin');
 Route::get('/about', 'FrontendController@about')->name('about');
-Route::get('/contact', 'FrontendController@contact')->name('contact');
 Route::get('/product', 'FrontendController@product')->name('product');
 Route::get('/checkout', 'FrontendController@checkout')->name('checkout');
 Route::get('/payment', 'FrontendController@payment')->name('payment');
 Route::get('/orderinfo', 'FrontendController@orderinfo')->name('orderinfo');
-Route::get('/order', 'FrontendController@order')->name('order');
 Route::get('/school', 'FrontendController@school')->name('school');
 Route::get('/plustwo', 'FrontendController@plustwo')->name('plustwo');
 Route::get('/alevel', 'FrontendController@alevel')->name('alevel');
@@ -45,4 +40,28 @@ Route::group (['as'=> 'admin.'], function(){
    Route::get('/admin', 'AdminController@index')->name('index');
 });
 // controller le route banai dincha
-Route::resource('/books','BookController');
+
+Route::resource('/users','UserController');
+Route::resource('/deposits','DepositController');
+Route::resource('/contacts','ContactController');
+Route::resource('/sells','SellController');
+Route::resource('/donates','DonateController');
+
+
+
+Route::group(['middleware' => 'auth'], function (){
+    
+    Route::prefix('admin')->group(function () {
+        Route::resource('/books','BookController');
+        
+        Route::resource('/categories','CategoryController');
+        Route::resource('/orders','OrderController');
+        
+       
+        
+
+
+
+
+    });
+});

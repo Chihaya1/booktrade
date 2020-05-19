@@ -28,16 +28,16 @@
 								<a class="nav-link" href="order.php">Order Book</a>
 							</li> -->
 							<li class="nav-item">
-								<a class="nav-link" href="{{url('/deposit')}}">Deposit Book</a>
+								<a class="nav-link" href="{{route('deposits.create')}}">Deposit Book</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="{{url('/donation')}}">Donation</a>
+								<a class="nav-link" href="{{url('/donates/create')}}">Donation</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="{{url('/login')}}">Login</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="{{url('/sell')}}">Sell</a>
+								<a class="nav-link" href="{{url('/sells/create')}}">Sell</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="{{url('/admin')}}">Admin</a>
@@ -46,7 +46,7 @@
 								<a class="nav-link" href="{{url('/about')}}">About Us</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="{{url('/contact')}}">Contact Us</a>
+								<a class="nav-link" href="{{route('contacts.create')}}">Contact Us</a>
 							</li>
 						</ul>
 					</nav>

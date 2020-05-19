@@ -14,7 +14,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        // return $categories;
+
+        return view('admin.categories.index',compact('categories'));
     }
 
     /**
@@ -24,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -36,6 +39,21 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name' => 'required',
+            'image'         => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            
+
+        ]);
+        $category = new Category();
+        $imagename = $request->image->getClientOriginalName();
+        $category->name = $request->name;
+        $category->image = $imagename;
+        $request->image->move(public_path('images'),$imagename);
+
+        // return $request;
+        $category->save();
+        return redirect()->route('categories.index')->withStatus('Category added');
     }
 
     /**
@@ -57,7 +75,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.categories.edit',compact('category'));
     }
 
     /**
@@ -69,7 +87,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $imagename = $request->image->getClientOriginalName();
+        $category->name = $request->name;
+        $category->image = $imagename;
+        $request->image->move(public_path('images'),$imagename);
+
+        // return $request;
+         $category->save();
+        return redirect()->route('categories.index')->withStatus('Category added');
     }
 
     /**
@@ -80,6 +105,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+       $category->delete();
+       return redirect('/categories')->with('status','Category Deleted');
     }
 }

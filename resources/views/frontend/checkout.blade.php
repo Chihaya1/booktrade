@@ -12,11 +12,11 @@
             <form action="" method="post">
                 <div class="form-group col-md-6">
                     <label>First Name:</label>
-                    <input type="text" class="form-control" id="first_name">
+                    <input type="text" class="form-control" name="first_name">
                 </div>
                 <div class="form-group col-md-6">
                     <label>Last Name:</label>
-                    <input type="text" class="form-control" id="last_name">
+                    <input type="text" class="form-control" name="last_name">
                 </div>
                 <div class="form-group col-md-6">
                     <label>Email:</label>
@@ -24,7 +24,7 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label>Address:</label>
-                    <input type="text" class="form-control" name="address" id="">
+                    <input type="text" class="form-control" name="address">
                 </div>
                 <div class="form-group col-md-6">
                     <label>Province Number:</label>
@@ -40,7 +40,15 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label>Phone number:</label>
-                    <input type="text" class="form-control" id="phone_number">
+                    <input type="text" class="form-control" name="phone_number">
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Card Number:</label>
+                    <input type="text" class="form-control" name="card_number">
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Quantity:</label>
+                    <input type="text" class="form-control" name="quantity">
                 </div>
                 <a class="btn btn-primary" href="{{url('/orderinfo')}}">Next</a>
                 <a  class="btn btn-dark">Back to cart</a>

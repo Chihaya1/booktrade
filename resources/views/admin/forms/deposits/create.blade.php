@@ -1,5 +1,4 @@
 @include('admin.partials.headerscript')
-	
 @include('admin.partials.header')
 	<!-- navigation -->
     <div class="row no-gutters">
@@ -11,35 +10,41 @@
         <div class="content">
             <p>Please fill the details of book you want to deposit.</p> 
         </div>
-        <form enctype="multipart/form-data" action="" method="post">
+        <form action="{{route('deposits.store')}}" method="post" enctype="multipart/form-data" >
             @csrf
             <div class="form-group col-md-6">
                 <label>Email:</label>
-                <input type="email" class="form-control" id="email">
+                <input type="email" class="form-control" name="email">
+                {{$errors->first('email')}}
             </div>
             <div class="form-group col-md-6">
                 <label>Book name:</label>
-                <input type="text" class="form-control" id="book_name">
+                <input type="text" class="form-control" name="title">
+                {{$errors->first('title')}}
             </div>
             <div class="form-group col-md-6">
-                <label>Author/Publication name:</label>
-                <input type="text" class="form-control" id="author">
+                <label>Author</label>
+                <input type="text" class="form-control" name="author">
+                {{$errors->first('author')}}
             </div>
             <div class="form-group col-md-6">
-                <label>MRP:</label>
-                <input type="email" class="form-control" id="MRP">
+                <label>Price:</label>
+                <input type="text" class="form-control" name="price">
+                {{$errors->first('price')}}
             </div>
             <div class="form-group col-md-6">
                 <label>Condition of Book</label>
-                    <select class="form-control" id="">
+                    <select class="form-control" name="condition">
                         <option>First Hand</option>
                         <option>Second Hand</option>
+                        {{$errors->first('condition')}}
                     </select>
             </div>
             <div class="form-group col-md-6">
                 <p><b>Photos max 2MB</b></p>
                 <label>Book image</label>
-                <input type="file" name="book_image" id="">
+                <input type="file" name="image">
+                {{$errors->first('image')}}
             </div>
             <button type="submit" class="btn btn-dark">Submit</button>
         </form><br>
