@@ -18,7 +18,7 @@
             @method('PUT')
             <div class="form-group col-md-6">
                 <label>Category name:</label>
-                <input value="name" class="form-control"  name="name">
+                <input value="{{ $category->name}}" class="form-control"  name="name">
             </div>
             <div class="form-group col-md-6">
                 <label>Image:</label>

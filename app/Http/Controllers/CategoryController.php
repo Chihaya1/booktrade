@@ -41,7 +41,7 @@ class CategoryController extends Controller
         //
         $request->validate([
             'name' => 'required',
-            'image'         => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image'=> 'required|image|mimes:jpeg,png,jpg|max:2048',
             
 
         ]);
@@ -87,10 +87,20 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        $imagename = $request->image->getClientOriginalName();
+        // $imagename = $request->image->getClientOriginalName();
         $category->name = $request->name;
-        $category->image = $imagename;
-        $request->image->move(public_path('images'),$imagename);
+        // $category->image = $imagename;
+        // $request->image->move(public_path('images'),$imagename);
+
+        if($request->has('image')){
+
+            $imagename = $request->image->getClientOriginalName();
+            $category->image = $imagename;
+            $request->image->move(public_path('images'),$imagename);
+
+           
+
+        }
 
         // return $request;
          $category->save();
@@ -105,6 +115,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        unlink(public_path('/images/'.$category->image));
        $category->delete();
        return redirect('/categories')->with('status','Category Deleted');
     }

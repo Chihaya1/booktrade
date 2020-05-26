@@ -31,7 +31,7 @@
 								<a class="nav-link" href="{{route('deposits.create')}}">Deposit Book</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="{{url('/donates/create')}}">Donation</a>
+								<a class="nav-link" href="{{route('donates.create')}}">Donation</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="{{url('/login')}}">Login</a>

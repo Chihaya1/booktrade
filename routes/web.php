@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/logout', 'Auth\LoginController@logout');
 
@@ -36,9 +36,9 @@ Route::get('/alevel', 'FrontendController@alevel')->name('alevel');
 Route::get('/comics', 'FrontendController@comics')->name('comics');
 // Route::get('/home', 'HomeController@index');
 
-Route::group (['as'=> 'admin.'], function(){
-   Route::get('/admin', 'AdminController@index')->name('index');
-});
+// Route::group (['as'=> 'admin.'], function(){
+//     Route::get('/admin', 'AdminController@index')->name('index');
+// });
 // controller le route banai dincha
 
 Route::resource('/users','UserController');
@@ -50,18 +50,12 @@ Route::resource('/donates','DonateController');
 
 
 Route::group(['middleware' => 'auth'], function (){
-    
+    Route::get('/admin', 'AdminController@index')->name('index');
     Route::prefix('admin')->group(function () {
         Route::resource('/books','BookController');
-        
         Route::resource('/categories','CategoryController');
         Route::resource('/orders','OrderController');
         
-       
-        
-
-
-
 
     });
 });

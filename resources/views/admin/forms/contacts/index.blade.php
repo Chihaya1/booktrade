@@ -38,7 +38,7 @@
                                 <td>{{ $contact->message }}</td>
                                 <td>
                                     <a  class="btn btn-secondary mb-2" href="{{ route('contacts.edit',$contact->id) }}">Edit</a>
-                                    <form onsubmit="return confirm('Are you sure?')"action="{{route('contacts.destroy',$contact->id)}}" method="post">
+                                    <form onsubmit="return confirm('Are you sure?')" action="{{route('contacts.destroy',$contact->id)}}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <input type= "submit" value="Delete" class="btn btn-danger">
@@ -46,7 +46,6 @@
                                 </td>
                             </tr>
                         @endforeach
-                    </form>
                 </tbody>
             </table> 
         </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Book;
 use Auth;
 use Illuminate\Http\Request;
+use App\Category;
 
 
 class BookController extends Controller
@@ -48,30 +49,31 @@ class BookController extends Controller
             'author'     =>'required',
             'description'=>'required',
             'price'      =>'required',
+            // 'category_id'=>'required',
             'image'      => 'required|image|mimes:jpeg,png,jpg|max:2048',
 
         ]);
 
         // Book->blank object which represents model
         $book = new Book;
-        // $imagename = $request->file('file');
         $imagename = $request->image->getClientOriginalName();
         $book->title = $request->title;
         $book->user_id = Auth::user()->id;
-        // $book->category_id = $request->category_id;
         $book->isbn = $request->isbn;
         $book->author = $request->author;
         $book->description = $request->description;
         $book->price = $request->price;
+        // $book->category_id =$request->category_id;
         $book->image = $imagename;
         $request->image->move(public_path('images'),$imagename);
 
-        // return $request;
+        //  return $request;
 
         $book->save();
         $categories = Category::find($request->category_id);
-        $book->categories()->attach($categories);
-        return redirect('/books.create')->with('status','Record saved');
+
+        // $book->categories()->attach($categories);->used in Many:Many relation
+        return redirect('/books.index')->with('status','Record saved');
     }
 
     /**

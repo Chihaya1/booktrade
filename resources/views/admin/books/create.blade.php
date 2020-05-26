@@ -58,9 +58,12 @@
             </div>
             <div class="form-group col-md-6">
                 <label>Category</label><br>
-                        @foreach(App\Category::all() as $category)
+                        <!-- @foreach(App\Category::all() as $category)
                             <input type="checkbox" name="category_id[]" value="{{ $category->id }}">{{ $category->name }}
-                        @endforeach
+                        @endforeach -->
+                            @foreach (App\Category::all() as $category)
+                                <input type="checkbox" name="category_id[]" value="{{ $category->id }}"> {{ $category->name }} <br>
+                            @endforeach
                     
             </div>
             <div class="form-group col-md-6">
