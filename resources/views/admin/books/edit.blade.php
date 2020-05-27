@@ -29,44 +29,45 @@
                  @endif
             </div>
     
-        <form action="{{route('books.store')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('books.update',$book->id)}}" method="post" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <div class="form-group col-md-6">
                 <label>Book name:</label>
-                <input type="text" class="form-control"  name="title">
+                <input type="text" value="{{ $book->title}}" class="form-control"  name="title">
                 {{$errors->first('title')}}
             </div>
             <div class="form-group col-md-6">
                 <label>Isbn Number:</label>
-                <input type="text" class="form-control"  name="isbn">
+                <input type="text" value="{{ $book->isbn}}" class="form-control"  name="isbn">
                 {{$errors->first('isbn')}}
             </div>
             <div class="form-group col-md-6">
                 <label>Author:</label>
-                <input type="text" class="form-control"  name="author">
+                <input type="text" value="{{ $book->author}}" class="form-control"  name="author">
                 {{$errors->first('author')}}
             </div>
             <div class="form-group col-md-6">
                 <label>Image:</label>
-                <input type="file" class="form-control" name="image">
+                <input type="file" value="{{ $book->image}}" class="form-control" name="image">
                 {{$errors->first('image')}}
             </div>
             <div class="form-group col-md-6">
                 <label>Price:</label>
-                <input type="text" class="form-control"  name="price">
+                <input type="text" value="{{ $book->price}}" class="form-control"  name="price">
                 {{$errors->first('price')}}
             </div>
             <div class="form-group col-md-6">
                 <label>Category</label>
                 <select class="form-control" name="category_id">
-                <!--Category->Book One-to-Many Relationship  -->
                     @foreach(App\Category::all() as $category)
-                        <option name="category_id[]" value="{{$category->id}}">{{$category->name}}</option>
+                            <option name="category_id[]" value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
+                </select>        
             </div>
             <div class="form-group col-md-6">
                 <label>Description:</label>
-                <textarea type="text" class="form-control"  name="description" rows="5"></textarea>
+                <textarea type="text"  value="{{ $book->description}}" class="form-control"  name="description" rows="5">{{ $book->description}}</textarea>
                 {{$errors->first('description')}}
             </div>
            

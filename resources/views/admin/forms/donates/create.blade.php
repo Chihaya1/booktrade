@@ -20,14 +20,14 @@
                     {{$errors->first('email')}}
                 </div>
                 <div class="form-group col-md-6">
-                <label>Category</label>
+                    <label>Category</label>
                     <select class="form-control" name="category">
                         <option>School</option>
                         <option>+2</option>
                         <option>A Level</option>
                         <option>Comics</option>
                     </select>
-            </div>
+                </div>
                 <div class="form-group col-md-6">
                     <label>Condition of Book</label>
                         <select class="form-control" name="condition">

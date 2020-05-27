@@ -14,7 +14,7 @@ class Book extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id','isbn','title','author','description','price','image',
+        'user_id','category_id','isbn','title','author','description','price','image',
     ];
 
     public function category()

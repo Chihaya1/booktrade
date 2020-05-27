@@ -19,8 +19,8 @@ class BookController extends Controller
     {
         // lists dekhau cha
         $books = Book::all();
-        return $books;
-        // return view('admin.books.index',compact('books'));
+        // return $books;
+        return view('admin.books.index',compact('books'));
         
     }
 
@@ -31,6 +31,7 @@ class BookController extends Controller
      */
     public function create()
     {
+        $categories=Category::all();
         return view('admin.books.create');
     }
 
@@ -63,17 +64,17 @@ class BookController extends Controller
         $book->author = $request->author;
         $book->description = $request->description;
         $book->price = $request->price;
-        // $book->category_id =$request->category_id;
+        $book->category_id =$request->category_id;
         $book->image = $imagename;
         $request->image->move(public_path('images'),$imagename);
 
         //  return $request;
 
         $book->save();
-        $categories = Category::find($request->category_id);
+        $book = Category::find($request->category_id);
 
         // $book->categories()->attach($categories);->used in Many:Many relation
-        return redirect('/books.index')->with('status','Record saved');
+        return redirect()->route('books.index')->with('status','Record saved');
     }
 
     /**
@@ -95,7 +96,7 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        return view('admin.books.edit',compact('book'));
     }
 
     /**
@@ -107,7 +108,27 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $book->title = $request->title;
+        $book->user_id = Auth::user()->id;
+        $book->isbn = $request->isbn;
+        $book->author = $request->author;
+        $book->description = $request->description;
+        $book->price = $request->price;
+        // $book->category_id =$request->category_id;
+        if($request->has('image')){
+
+            $imagename = $request->image->getClientOriginalName();
+            $book->image = $imagename;
+            $request->image->move(public_path('images'),$imagename);
+        }
+
+        //  return $request;
+
+        $book->save();
+        $book = Category::find($request->category_id);
+
+        // $book->categories()->attach($categories);->used in Many:Many relation
+        return redirect()->route('books.index')->with('status','Record Updated');
     }
 
     /**
@@ -118,6 +139,8 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        unlink(public_path('/images/'.$book->image));
+        $book->delete();
+        return redirect('/books')->with('status','Book Deleted');
     }
 }

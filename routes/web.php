@@ -22,8 +22,8 @@ Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/home', 'FrontendController@home')->name('home');
-Route::get('/books', 'FrontendController@books')->name('books');
-Route::get('/book', 'FrontendController@book')->name('book');
+// Route::get('/books', 'FrontendController@books')->name('books');
+// Route::get('/book', 'FrontendController@book')->name('book');
 Route::get('/donation', 'FrontendController@donation')->name('donation');
 Route::get('/about', 'FrontendController@about')->name('about');
 Route::get('/product', 'FrontendController@product')->name('product');
