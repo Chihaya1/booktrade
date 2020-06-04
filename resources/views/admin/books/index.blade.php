@@ -50,15 +50,15 @@
                                 <td>{{ $book->author }}</td>
                                 <td>
                                     <ul>
-                                        @foreach($book->categories as $category)
-                                            <li><a href="/admin/categories/{{$category->id}}">{{ $category->name }}</a></li>
+                                        @foreach($book->category as $category)
+                                            <li><a href="/admin/categories/{{$category->id}}">{{ $category->name}}</a></li>
                                         @endforeach
                                     </ul>
                                 </td>
                                 <td>{{ $book->description }}</td>
 
                                 <td>
-                                    <img src="/images/{{ $book->image }}" class="img-fluid" alt="">
+                                    <img src="/images/{{ $book->image }}" class="img-fluid" alt="book">
                                 </td>
                             
                                 <td>

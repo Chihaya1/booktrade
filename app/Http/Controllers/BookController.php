@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use App\Category;
 use Auth;
 use Illuminate\Http\Request;
-use App\Category;
+
 
 
 class BookController extends Controller
@@ -31,8 +32,8 @@ class BookController extends Controller
      */
     public function create()
     {
-        $categories=Category::all();
-        return view('admin.books.create');
+        $categories = Category::all();
+        return view('admin.books.create',compact('categories'));
     }
 
     /**
@@ -68,10 +69,11 @@ class BookController extends Controller
         $book->image = $imagename;
         $request->image->move(public_path('images'),$imagename);
 
-        //  return $request;
+        // return $request;
 
         $book->save();
         $book = Category::find($request->category_id);
+        // $book->category();
 
         // $book->categories()->attach($categories);->used in Many:Many relation
         return redirect()->route('books.index')->with('status','Record saved');
@@ -114,7 +116,7 @@ class BookController extends Controller
         $book->author = $request->author;
         $book->description = $request->description;
         $book->price = $request->price;
-        // $book->category_id =$request->category_id;
+        $book->category_id =$request->category_id;
         if($request->has('image')){
 
             $imagename = $request->image->getClientOriginalName();
@@ -126,6 +128,7 @@ class BookController extends Controller
 
         $book->save();
         $book = Category::find($request->category_id);
+        $book->category();
 
         // $book->categories()->attach($categories);->used in Many:Many relation
         return redirect()->route('books.index')->with('status','Record Updated');
