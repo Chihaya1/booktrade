@@ -17,6 +17,11 @@ class Book extends Model
         'user_id','category_id','isbn','title','author','description','price','image',
     ];
 
+    // public function category()
+    // {
+    //     return $this->belongsTo(Category::class);
+    // }
+
     public function category()
     {
         return $this->belongsTo(Category::class);

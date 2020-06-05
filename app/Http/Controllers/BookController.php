@@ -73,7 +73,6 @@ class BookController extends Controller
 
         $book->save();
         $book = Category::find($request->category_id);
-        // $book->category();
 
         // $book->categories()->attach($categories);->used in Many:Many relation
         return redirect()->route('books.index')->with('status','Record saved');
@@ -128,7 +127,7 @@ class BookController extends Controller
 
         $book->save();
         $book = Category::find($request->category_id);
-        $book->category();
+        // $book->category();
 
         // $book->categories()->attach($categories);->used in Many:Many relation
         return redirect()->route('books.index')->with('status','Record Updated');

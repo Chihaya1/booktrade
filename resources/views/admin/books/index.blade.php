@@ -35,9 +35,9 @@
                     <th>Title</th>
                     <th>Isbn</th>
                     <th>Author</th>
-                    <th>Image</th>
-                    <th>Price</th>
                     <th>Category</th>
+                    <th>Price</th>
+                    <th>Image</th>
                     <th>Description</th>
                     <th>Options</th>
                 </tr>
@@ -49,17 +49,14 @@
                                 <td>{{ $book->isbn }}</td>
                                 <td>{{ $book->author }}</td>
                                 <td>
-                                    <ul>
-                                        @foreach($book->category as $category)
-                                            <li><a href="/admin/categories/{{$category->id}}">{{ $category->name}}</a></li>
-                                        @endforeach
-                                    </ul>
+                                <ul>
+                                    <a href="/admin/categories/{{$book->category->id}}">{{ $book->category->name}}</a>
                                 </td>
-                                <td>{{ $book->description }}</td>
-
+                                <td>{{ $book->price }}</td>
                                 <td>
                                     <img src="/images/{{ $book->image }}" class="img-fluid" alt="book">
                                 </td>
+                                <td>{{ $book->description }}</td>
                             
                                 <td>
                                     <a  class="btn btn-secondary mb-2" href="{{ route('books.edit',$book->id) }}">Edit</a><br>

@@ -61,7 +61,7 @@
                 <select class="form-control" name="category_id">
                 <!--Category->Book One-to-Many Relationship  -->
                     @foreach(App\Category::all() as $category)
-                        <option name="category_id[]" value="{{ $category->id}}">{{$category->name}}</option>
+                        <option name="category_id" value="{{ $category->id}}">{{$category->name}}</option>
                     @endforeach
                 </select>
             </div>
