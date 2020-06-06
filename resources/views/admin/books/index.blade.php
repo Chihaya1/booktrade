@@ -51,6 +51,7 @@
                                 <td>
                                 <ul>
                                     <a href="/admin/categories/{{$book->category->id}}">{{ $book->category->name}}</a>
+                                </ul>
                                 </td>
                                 <td>{{ $book->price }}</td>
                                 <td>

@@ -1,23 +1,27 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Book;
 
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
     public function home()
-    {
-        return view('frontend.home');
-    }
-    public function books()
-    {
-        return view('frontend.books');
+     {
+        $books = Book::all();
+        return view('frontend.home',[ 'books' => $books]);
+       // return view('frontend.home');
     }
     public function book()
     {
-        return view('frontend.book');
+        $books = Book::all();
+        return view('frontend.books')->with(compact($books));
     }
+    // public function book()
+    // {
+    //     return view('frontend.book');
+    // }
     // public function deposit()
     // {
     //     return view('frontend.deposit');

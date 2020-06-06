@@ -16,6 +16,12 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth',['except' => ['create','show']]);
+    }
+
     public function index()
     {
         // lists dekhau cha
@@ -86,7 +92,8 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        return view('admin.books.show',compact('book'));
+        
     }
 
     /**
