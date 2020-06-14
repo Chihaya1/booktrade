@@ -23,17 +23,13 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/home', 'FrontendController@home')->name('home');
 Route::get('/book', 'FrontendController@book')->name('book');
-// Route::get('/book', 'FrontendController@book')->name('book');
 Route::get('/donation', 'FrontendController@donation')->name('donation');
 Route::get('/about', 'FrontendController@about')->name('about');
 Route::get('/product', 'FrontendController@product')->name('product');
 Route::get('/checkout', 'FrontendController@checkout')->name('checkout');
 Route::get('/payment', 'FrontendController@payment')->name('payment');
 Route::get('/orderinfo', 'FrontendController@orderinfo')->name('orderinfo');
-Route::get('/school', 'FrontendController@school')->name('school');
-Route::get('/plustwo', 'FrontendController@plustwo')->name('plustwo');
-Route::get('/alevel', 'FrontendController@alevel')->name('alevel');
-Route::get('/comics', 'FrontendController@comics')->name('comics');
+Route::get('/bookscategory/{id}', 'FrontendController@bookscategory')->name('bookscategory');
 // Route::get('/home', 'HomeController@index');
 
 // Route::group (['as'=> 'admin.'], function(){

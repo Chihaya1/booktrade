@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Book;
+use App\Category;
 
 use Illuminate\Http\Request;
 
@@ -30,7 +31,6 @@ class FrontendController extends Controller
     {
         return view('frontend.donation');
     }
-
     
     public function about()
     {
@@ -54,22 +54,12 @@ class FrontendController extends Controller
         return view('frontend.orderinfo');
     }
    
-    public function school()
+    public function bookscategory($id)
     {
-        return view('frontend.school');
+        // getting id of category and book
+        $category_books = Book::where('category_id',$id)->get();
+        $id = $id;
+        return view('frontend.bookscategory',compact('category_books','id'));
     }
-    public function plustwo()
-    {
-        return view('frontend.plustwo');
-    }
-    public function alevel()
-    {
-        return view('frontend.alevel');
-    }
-    public function comics()
-    {
-        return view('frontend.comics');
-    }
-
     
 }

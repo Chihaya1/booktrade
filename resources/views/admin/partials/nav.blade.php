@@ -5,10 +5,13 @@
 	</div>
 	<div class="booklists">
 		<ul>
-			<li>
-				<a href="{{url('/school')}}">School Books</a>
-			</li><br>
-			<li>
+		<?php $categories = DB::table('categories')->get();?>
+			@foreach($categories as $category)
+				<li>
+					<a href="{{url('bookscategory',$category->id)}}">{{$category->name}}</a>
+				</li><br>
+			@endforeach
+			<!-- <li>
 				<a href="{{url('/plustwo')}}">+2 books</a>
 			</li><br>
 			<li>
@@ -16,7 +19,7 @@
 			</li><br>
 			<li>
 				<a href="{{url('/comics')}}">Comics</a>
-			</li><br>
+			</li><br> -->
 
 		</ul>
 	</div>

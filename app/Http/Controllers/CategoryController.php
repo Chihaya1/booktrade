@@ -64,7 +64,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        //    
     }
 
     /**
@@ -104,7 +104,7 @@ class CategoryController extends Controller
 
         // return $request;
          $category->save();
-        return redirect()->route('categories.index')->withStatus('Category added');
+        return redirect()->route('categories.index')->withStatus('Category U[dated');
     }
 
     /**
