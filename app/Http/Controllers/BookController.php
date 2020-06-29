@@ -52,7 +52,7 @@ class BookController extends Controller
     {
         // validation
         $request->validate([
-            'title'      => 'required|unique:books|max:255',
+            'name'      => 'required|unique:books|max:255',
             'isbn'       => 'required|unique:books|max:13',
             'author'     =>'required',
             'description'=>'required',
@@ -65,7 +65,7 @@ class BookController extends Controller
         // Book->blank object which represents model
         $book = new Book;
         $imagename = $request->image->getClientOriginalName();
-        $book->title = $request->title;
+        $book->name = $request->name;
         $book->user_id = Auth::user()->id;
         $book->isbn = $request->isbn;
         $book->author = $request->author;
@@ -116,7 +116,7 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        $book->title = $request->title;
+        $book->name = $request->name;
         $book->user_id = Auth::user()->id;
         $book->isbn = $request->isbn;
         $book->author = $request->author;

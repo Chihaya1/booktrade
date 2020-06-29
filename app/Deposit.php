@@ -12,6 +12,6 @@ class Deposit extends Model
      * @var array
      */
     protected $fillable = [
-        'email', 'title','author','price','condition','image',
+        'email', 'name','author','price','condition','image',
     ];
 }

@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'phone_number', 'address','email','password',
+        'first_name', 'last_name', 'phone_number', 'address','email','password','admin'
     ];
 
     /**
@@ -25,7 +25,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token','admin'
     ];
 
     /**
@@ -40,6 +40,11 @@ class User extends Authenticatable
     public function books()
     {
         return $this->hasMany('Book::class');
+    }
+
+    public function isAdmin()
+    {
+        return $this->admin;
     }
 }
 

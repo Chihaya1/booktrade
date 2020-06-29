@@ -18,7 +18,7 @@ class CreateBooksTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('category_id')->unsigned();
             $table->string('isbn');
-            $table->string('title');
+            $table->string('name');
             $table->string('author');
             $table->text('description');
             $table->double('price',10,2);

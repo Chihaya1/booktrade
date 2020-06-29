@@ -12,14 +12,17 @@
         		</div>
         		<div class="col-md-10 ">
 
-        			<h2 class="ml-5">{{$book->title}}</h2><!-- title -->
+        			<h2 class="ml-5">{{$book->name}}</h2><!-- title -->
         			<h6 class="ml-5 text-primary">{{$book->author}}</h6><!-- Author -->
         			<h6 class="ml-5">{{$book->category->name}}</h6>
         			<div class="mr-5">
         			    <p class="ml-5 text-justify mr-5 mt-5">{{$book->description}}</p>
-                    </div>
-        		</div>
+                    </div>      
+				</div>	
+				
         	</div>
+			
         </div>
+		
 </div>
 @include('admin.partials.footerscript')

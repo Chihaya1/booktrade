@@ -19,7 +19,6 @@
                 <thead>
                 <tr>
                     <th>Category Name</th>
-                    <th>Image</th>
                     <th>Options</th>
                 </tr>
                 </thead>
@@ -27,11 +26,6 @@
                         @foreach($categories as $category)
                             <tr>
                                 <td>{{ $category->name }}</td>
-
-                                <td>
-                                    <img src="/images/{{ $category->image }}" class="img-fluid" alt="">
-                                </td>
-                           
                                 <td>
                                     <a  class="btn btn-secondary mb-2" href="{{ route('categories.edit',$category->id) }}">Edit</a><br>
                                     <form onsubmit="return confirm('Are you sure?')" action="{{route('categories.destroy',$category->id)}}" method="post">

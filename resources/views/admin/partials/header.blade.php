@@ -13,7 +13,10 @@
 					</div>
 				</div>
 				<div class="col-sm-2 scart">
-						<i class="fa fa-cart-arrow-down"></i>
+					<a href="{{route('cart.index')}}">
+					<i class="fa fa-shopping-cart"></i>
+					Cart
+					<span>{{Cart::count()}}</span>
 				</div> 
 				
 				

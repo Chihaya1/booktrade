@@ -5,21 +5,7 @@
 <div class="row no-gutters">
     <div class="col-md-2">
         @include('admin.partials.nav')
-        <div>
-            <label><b>Condition of Book</b></label>
-                <select class="form-control" id="">
-                    <option>First Hand</option>
-                    <option>Second Hand</option>
-                </select>
-            </div><br><br>
-            <div>
-                <label><b>Default Sorting</b></label>
-                    <select class="form-control" id="">
-                                <option>Sort By Latest</option>
-                                <option>Sort By Popularity</option>
-                    </select>
-            </div>
-        </div>
+    </div>
     <div class="col-md-10">
             <div class="card-body">
                  @if (session('status'))
@@ -33,7 +19,7 @@
             @csrf
             <div class="form-group col-md-6">
                 <label>Book name:</label>
-                <input type="text" class="form-control"  name="title">
+                <input type="text" class="form-control"  name="name">
                 {{$errors->first('title')}}
             </div>
             <div class="form-group col-md-6">

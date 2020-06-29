@@ -34,7 +34,7 @@
             @method('PUT')
             <div class="form-group col-md-6">
                 <label>Book name:</label>
-                <input type="text" value="{{ $book->title}}" class="form-control"  name="title">
+                <input type="text" value="{{ $book->name}}" class="form-control"  name="title">
                 {{$errors->first('title')}}
             </div>
             <div class="form-group col-md-6">

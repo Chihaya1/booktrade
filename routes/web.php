@@ -1,4 +1,5 @@
 <?php
+use App\Book;
 
 /*
 |--------------------------------------------------------------------------
@@ -11,8 +12,8 @@
 |
 */
 
-Route::get('/home', function () {
-    return view('frontend.home');
+Route::get('/', function () {
+    return view('frontend.home')->with(['books' => \App\Book::all()]);
 });
 
 Auth::routes();
@@ -20,6 +21,8 @@ Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/logout', 'Auth\LoginController@logout');
+Route::resource('/cart', 'CartController');
+Route::get('/cart/addItem/{id}', 'CartController@addItem')->name('cart.addItem');
 
 Route::get('/home', 'FrontendController@home')->name('home');
 Route::get('/book', 'FrontendController@book')->name('book');
@@ -45,8 +48,9 @@ Route::resource('/donates','DonateController');
 Route::resource('/books','BookController');
 
 
-
+// admin routes
 Route::group(['middleware' => 'auth'], function (){
+    // index.blade.php->admin ko index 
     Route::get('/admin', 'AdminController@index')->name('index');
     Route::prefix('admin')->group(function () {
         // Route::resource('/books','BookController');

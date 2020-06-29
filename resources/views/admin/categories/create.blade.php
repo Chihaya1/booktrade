@@ -20,11 +20,6 @@
                 <input type="text" class="form-control"  name="name">
                 {{$errors->first('name')}}
             </div>
-            <div class="form-group col-md-6">
-                <label>Image:</label>
-                <input type="file" class="form-control"  name="image">
-                {{$errors->first('image')}}
-            </div>
             <button type="submit" class="btn btn-dark">Add</button>
         </form><br>
     </div>

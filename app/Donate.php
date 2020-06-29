@@ -11,6 +11,6 @@ class Donate extends Model
      * @var array
      */
     protected $fillable = [
-        'title','email','category','phone_number','address','author','condition','description',
+        'name','email','category','phone_number','address','author','condition','description',
     ];
 }

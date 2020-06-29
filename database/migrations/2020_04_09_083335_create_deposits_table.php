@@ -16,7 +16,7 @@ class CreateDepositsTable extends Migration
         Schema::create('deposits', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('email')->unique();
-            $table->string('title');
+            $table->string('name');
             $table->string('author');
             $table->double('price',10,2);
             $table->string('condition');
