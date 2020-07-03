@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Address;
 
 use Illuminate\Http\Request;
-use App\Book;
-use Cart;
+use Auth;
 
-class CartController extends Controller
+class AddressController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        $cartItems=Cart::content();
-        return view('cart.index',compact('cartItems'));
+        //
     }
 
     /**
@@ -26,9 +25,7 @@ class CartController extends Controller
      */
     public function create()
     {
-      
-
-
+        //
     }
 
     /**
@@ -40,6 +37,26 @@ class CartController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'first_name'      => 'required',
+            'last_name'       => 'required',
+            'address'         => 'required',
+            'province'        =>'required',
+            'phone_number'    =>'required|unique:contacts|max:10',
+            'card_number'     =>'required|unique:addresses|max:16'
+
+        ]);
+        $address = new Address;
+        $address->first_name = $request->first_name;
+        $address->last_name = $request->last_name;
+        $address->user_id = Auth::user()->id;
+        $address->address = $request->address;
+        $address->province = $request->province;
+        $address->phone_number = $request->phone_number;
+        $address->card_number = $request->card_number;
+
+        $address->save();
+        return redirect()->route('checkout.payment');
     }
 
     /**
@@ -61,24 +78,7 @@ class CartController extends Controller
      */
     public function edit($id)
     {
-       
-    }
-    public function addItem($id)
-    {
-        // $book = Book::find($id);
-        $book = Book::find(request()->id);
-        // Cart::add(array(
-        //     'id' => $book->id,
-        //     'name' => $book->name,
-        //     'qty' => 1,
-        //     'price' => $book->price,
-        //     'options' => array('images' => $book->image)
-        //     ));
-           
-
-        Cart::add($id,$book->name,1,$book->price);
-        return redirect()->route('cart.index')->withStatus('Book added to Cart');
-
+        //
     }
 
     /**
@@ -90,9 +90,7 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Cart::update($id,['qty'=>$request->qty]);
-        return redirect()->route('cart.index')->withStatus('Cart Record updated');
-
+        //
     }
 
     /**
@@ -103,7 +101,6 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        Cart::remove($id);
-        return redirect()->route('cart.index')->withStatus('Book Deleted from Cart');
+        //
     }
 }

@@ -24,13 +24,12 @@ Route::get('/logout', 'Auth\LoginController@logout');
 Route::resource('/cart', 'CartController');
 Route::get('/cart/addItem/{id}', 'CartController@addItem')->name('cart.addItem');
 
+
 Route::get('/home', 'FrontendController@home')->name('home');
 Route::get('/book', 'FrontendController@book')->name('book');
 Route::get('/donation', 'FrontendController@donation')->name('donation');
 Route::get('/about', 'FrontendController@about')->name('about');
 Route::get('/product', 'FrontendController@product')->name('product');
-Route::get('/checkout', 'FrontendController@checkout')->name('checkout');
-Route::get('/payment', 'FrontendController@payment')->name('payment');
 Route::get('/orderinfo', 'FrontendController@orderinfo')->name('orderinfo');
 Route::get('/bookscategory/{id}', 'FrontendController@bookscategory')->name('bookscategory');
 // Route::get('/home', 'HomeController@index');
@@ -46,12 +45,16 @@ Route::resource('/contacts','ContactController');
 Route::resource('/sells','SellController');
 Route::resource('/donates','DonateController');
 Route::resource('/books','BookController');
+// shipping information
+Route::resource('/addresses','AddressController');
 
 
 // admin routes
 Route::group(['middleware' => 'auth'], function (){
     // index.blade.php->admin ko index 
     Route::get('/admin', 'AdminController@index')->name('index');
+    // checkout
+    Route::get('/checkout','CheckoutController@shipping')->name('checkout.shipping');
     Route::prefix('admin')->group(function () {
         // Route::resource('/books','BookController');
         Route::resource('/categories','CategoryController');
@@ -59,4 +62,7 @@ Route::group(['middleware' => 'auth'], function (){
         
 
     });
+
+    Route::get('/payment','CheckoutController@payment')->name('checkout.payment');
+    Route::post('/paymentstore','CheckoutController@paymentstore')->name('payment.store');
 });

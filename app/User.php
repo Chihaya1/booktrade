@@ -46,5 +46,9 @@ class User extends Authenticatable
     {
         return $this->admin;
     }
+    public function address()
+    {
+        return $this->hasMany('Address::class');
+    }
 }
 

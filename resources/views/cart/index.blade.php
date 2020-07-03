@@ -22,43 +22,52 @@
                         <th>Image</th>
                         <th>Price</th>
                         <th>Quantity</th>
-                        <th>Delete</th>
                         <th>Total</th>
+                        <th>Delete</th>
+                        
                        
                         
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($cartItems as $book)
+                    @foreach($cartItems as $cartItem)
                         <tr>
-                            <td>{{$book->name}}</td>
+                            <td>{{$cartItem->name}}</td>
+                            <!-- <td class="cart_product">
+                                    <p><img src="{{url('images',$cartItem->options->img)}}" class="img-responsive" width="250"></p>
+                                </td> -->
                             <td>
-                            <img src="/images/{{$book->options->image}}"  class="img-fluid" width="250">
+                            <img src="/images/{{$cartItem->image}}"  class="img-fluid" width="200"> 
                             </td>
                             </td>  
-                            <td>{{$book->price}}</td>
-                            <td>{{$book->qty}}</td>
+                            <td>{{$cartItem->price}}</td>
+                            <td>{{$cartItem->qty}}</td>
+                           
+                            <td>Rs. {{ $cartItem->subtotal()}}</td>
 
                             <td>
-                                <form  onsubmit="return confirm('Are you sure?')"  action="{{route('cart.destroy',$book->rowId)}}"  method="post">
+                                <form  onsubmit="return confirm('Are you sure?')"  action="{{route('cart.destroy',$cartItem->rowId)}}"  method="post">
                                     @csrf
                                     @method('DELETE')
                                     <input type="submit" value="Delete" class="btn btn-danger">
                                 </form>
                             </td>
-                            <td>Rs. {{ $book->total()}}</td>
                         </tr>
                     @endforeach
                     <tr>
                         <td>
-                            Sub Total: Rs.{{Cart::subtotal()}} <br>
+                            Sub Total: Rs.{{Cart::subtotal()}}
+                             <br>
+                             <td></td>
                             Grand Total:Rs.{{Cart::total()}}
+                            <td></td>
                         </td>
                         <td>Items:{{Cart::count()}}</td>
+                        <td></td>
                     </tr>
                 </tbody>   
             </table> 
-            <a href="" class="btn btn-dark">Checkout</a><br><br>    
+            <a href="{{route('checkout.shipping')}}" class="btn btn-dark">Checkout</a><br><br>    
         </div>       
 </div>
 
