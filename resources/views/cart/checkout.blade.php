@@ -36,11 +36,6 @@
                     <input type="text" class="form-control" name="province">
                     {{$errors->first('province')}}
                 </div>
-                <div class="form-group col-md-6">
-                    <label>Card Number:</label>
-                    <input type="text" class="form-control" name="card_number">
-                    {{$errors->first('card_number')}}
-                </div>
                 <!-- <a class="btn btn-primary" href="{{url('/orderinfo')}}">Next</a> -->
                 <button href="{{route('checkout.payment')}}" type="submit" class="btn btn-dark">Payment</button>
                 <!--  -->

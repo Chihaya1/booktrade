@@ -43,7 +43,6 @@ class AddressController extends Controller
             'address'         => 'required',
             'province'        =>'required',
             'phone_number'    =>'required|unique:contacts|max:10',
-            'card_number'     =>'required|unique:addresses|max:16'
 
         ]);
         $address = new Address;
@@ -53,7 +52,6 @@ class AddressController extends Controller
         $address->address = $request->address;
         $address->province = $request->province;
         $address->phone_number = $request->phone_number;
-        $address->card_number = $request->card_number;
 
         $address->save();
         return redirect()->route('checkout.payment');

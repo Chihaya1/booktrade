@@ -20,25 +20,21 @@
 				</div> 
 				
 				
-				<div class="col-md-6">
+				<div class="col-md-7">
 					<nav class="navbar navbar-expand-sm header-list mt-2 justify-content-end pr-5">
 						<ul class="navbar-nav">
 							<li class="nav-item active">
 								<a class="nav-link" href="{{url('/home')}}">Home</a>
 							</li>
-							
-							<!-- <li class="nav-item">
-								<a class="nav-link" href="order.php">Order Book</a>
-							</li> -->
 							<li class="nav-item">
 								<a class="nav-link" href="{{route('deposits.create')}}">Deposit Book</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="{{route('donates.create')}}">Donation</a>
 							</li>
-							<li class="nav-item">
+							<!-- <li class="nav-item">
 								<a class="nav-link" href="{{url('/login')}}">Login</a>
-							</li>
+							</li> -->
 							<li class="nav-item">
 								<a class="nav-link" href="{{url('/sells/create')}}">Sell</a>
 							</li>
@@ -51,6 +47,18 @@
 							<li class="nav-item">
 								<a class="nav-link" href="{{route('contacts.create')}}">Contact Us</a>
 							</li>
+							<?php if(Auth::check()){ ?>
+								<li class="nav-item dropdown">
+									<a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
+									<div class="dropdown-menu" aria-labelledby="dropdown01">
+										<a style="color: black;" class="dropdown-item" href="#">{{Auth::user()->first_name}}</a>
+										<a style="color: black;" class="dropdown-item" href="{{url('/logout')}}">Logout</a>
+										<a style="color: black;" class="dropdown-item" href="{{url('/')}}/profile">Profile</a>
+									</div>
+								</li>
+            				<?php }else{ ?>
+            					<li class="nav-item"><a class="nav-link" href="{{url('/login')}}">Login</a></li>
+           					<?php }?>
 						</ul>
 					</nav>
 				</div>

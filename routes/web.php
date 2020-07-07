@@ -32,7 +32,9 @@ Route::get('/about', 'FrontendController@about')->name('about');
 Route::get('/product', 'FrontendController@product')->name('product');
 Route::get('/orderinfo', 'FrontendController@orderinfo')->name('orderinfo');
 Route::get('/bookscategory/{id}', 'FrontendController@bookscategory')->name('bookscategory');
-// Route::get('/home', 'HomeController@index');
+
+Route::get('/profile', 'ProfileController@index')->name('profile');
+Route::get('/userorders', 'ProfileController@userorders')->name('userorders');
 
 // Route::group (['as'=> 'admin.'], function(){
 //     Route::get('/admin', 'AdminController@index')->name('index');
@@ -51,18 +53,27 @@ Route::resource('/addresses','AddressController');
 
 // admin routes
 Route::group(['middleware' => 'auth'], function (){
+    Route::post('toggledeliver/{orderId}', 'OrderController@toggledeliver')->name('toggle.deliver');
     // index.blade.php->admin ko index 
     Route::get('/admin', 'AdminController@index')->name('index');
     // checkout
-    Route::get('/checkout','CheckoutController@shipping')->name('checkout.shipping');
+   
     Route::prefix('admin')->group(function () {
-        // Route::resource('/books','BookController');
+        
         Route::resource('/categories','CategoryController');
-        Route::resource('/orders','OrderController');
+        // Route::resource('/orders','OrderController');
+
+        Route::get('orders/{type?}', 'OrderController@Orders')->name('orders');
         
 
     });
 
     Route::get('/payment','CheckoutController@payment')->name('checkout.payment');
     Route::post('/paymentstore','CheckoutController@paymentstore')->name('payment.store');
+
+    // For Loggedin customers
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/checkout','CheckoutController@shipping')->name('checkout.shipping');
+
+    });
 });

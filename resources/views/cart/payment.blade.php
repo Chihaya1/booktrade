@@ -77,10 +77,10 @@
 <!-- navigation -->
 <div class="row no-gutters">
 		<div class="col-md-2">
-            @include('admin.partials.nav')
+            
 			
         </div>
-        <div class= "col-md-9 offset-md-1" >
+        <div class= "col-md-10" >
             <h3 class="text-left mt-5">Payment Information</h3>
             <!-- "{{route('payment.store')}}" -->
             <script src="https://js.stripe.com/v2/"></script>

@@ -41,7 +41,17 @@
                             </td>
                             </td>  
                             <td>{{$cartItem->price}}</td>
-                            <td>{{$cartItem->qty}}</td>
+                            <td>
+                            <!-- {{$cartItem->qty}} -->
+                            <form onsubmit="return confirm('Are you sure you want to update the quantity?')" action="{{route('cart.update',$cartItem->rowId)}}" method="post">
+                            @csrf
+                            @method('PUT')
+                            <input name="qty" type="text" value="{{$cartItem->qty}}"><br><br>
+                            <input style="float: left"  type="submit" class="btn btn-success" value="Update">
+                         
+                            </form>
+                            
+                            </td>
                            
                             <td>Rs. {{ $cartItem->subtotal()}}</td>
 
@@ -58,7 +68,6 @@
                         <td>
                             Sub Total: Rs.{{Cart::subtotal()}}
                              <br>
-                             <td></td>
                             Grand Total:Rs.{{Cart::total()}}
                             <td></td>
                         </td>

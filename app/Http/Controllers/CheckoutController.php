@@ -42,7 +42,7 @@ class CheckoutController extends Controller
                 // The card has been declined
             }
           //Create the order
-        //    Order::createOrder();
+         Order::createOrder();
     
             //redirect user to some page
             // return "Order completed";

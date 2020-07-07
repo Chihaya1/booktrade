@@ -90,7 +90,7 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Cart::update($id,['qty'=>$request->qty]);
+        Cart::update($id,$request->qty);
         return redirect()->route('cart.index')->withStatus('Cart Record updated');
 
     }

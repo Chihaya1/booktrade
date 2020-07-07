@@ -8,7 +8,6 @@
                 <li class="list-group-item active">Dashboard</li>
                     <li class="list-group-item">
                         <a href="{{route('books.create')}}">Add Books</a>
-
                     </li>
                     <li class="list-group-item">
                         <a href="{{route('books.index')}}">View all Books</a>
@@ -25,7 +24,13 @@
                         <a href="{{route('contacts.index')}}">View all Contacts</a>
                     </li>
                     <li class="list-group-item">
-                        <a href="{{route('orders.index')}}">View all Orders</a>
+                        <a href="{{url('admin/orders/pending')}}">Pending Orders</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{{url('admin/orders/delivered')}}">Delivered Orders</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{{url('admin/orders')}}">All Orders</a>
                     </li>
                     <li class="list-group-item">
                         <a href="{{route('deposits.index')}}">View all Deposits</a>
