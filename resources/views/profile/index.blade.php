@@ -26,8 +26,8 @@
                             <li><h3>Welcome <span style='color:blue'>{{Auth::user()->first_name}}</span></h3></li>
                             <table class="table table-bordered table-hover table-reponsive">
                                 <tr>
-                                    <td><a  href="{{url('/')}}/porders" class="btn btn-success">My Orders</a></td>
-                                    <td><a href="{{url('/address')}}" class="btn btn-success">My Address</a></td>
+                                    <td><a  href="{{url('/')}}/userorders" class="btn btn-success">My Orders Transaction</a></td>
+                                    <!-- <td><a href="{{url('/address')}}" class="btn btn-success">My Address</a></td> -->
                                     <td><a href="{{url('/password')}}" class="btn btn-success">Change Password</a></td>
                                 </tr>
                             </table>

@@ -28,14 +28,26 @@
                             <thead>
                             <tr>
                                 <th>Date</th>
-                                <th>Title</th>
-                                <th>Isbn</th>
+                                <th>Product name</th>
+                                <th>Price</th>
+                                <th>Author</th>
+                                <th>Quantity</th>
                                 <th>Order Total</th>
                                 <th>Order Status</th>
                             </tr>
                             </thead>
                             <tbody>
-                            
+                                @foreach($orders as $order)
+                                <tr>
+                                    <td>{{$order->created_at}}</td>
+                                    <td>{{ucwords($order->name)}}</td>
+                                    <td>{{ucwords($order->price)}}</td>
+                                    <td>{{ucwords($order->author)}}</td>
+                                    <td>{{$order->qty}}</td>
+                                    <td>{{$order->total}}</td>
+                                    <td>{{$order->delivered}}</td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
