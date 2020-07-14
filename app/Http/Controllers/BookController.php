@@ -152,4 +152,11 @@ class BookController extends Controller
         $book->delete();
         return redirect('/books')->with('status','Book Deleted');
     }
+
+    public function search(){
+        $search_text  = $_GET['search'];
+        $books = Book::where('name','like','%'.$search_text.'%')->with('category')->get();
+
+        return view('admin.books.search',compact('books'));
+    }
 }

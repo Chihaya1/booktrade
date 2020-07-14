@@ -19,7 +19,6 @@
                 <thead>
                     <tr>
                         <th>Title</th>
-                        <th>Image</th>
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Total</th>
@@ -33,23 +32,15 @@
                     @foreach($cartItems as $cartItem)
                         <tr>
                             <td>{{$cartItem->name}}</td>
-                            <!-- <td class="cart_product">
-                                    <p><img src="{{url('images',$cartItem->options->img)}}" class="img-responsive" width="250"></p>
-                                </td> -->
-                            <td>
-                            <img src="/images/{{$cartItem->image}}"  class="img-fluid" width="200"> 
-                            </td>
-                            </td>  
                             <td>{{$cartItem->price}}</td>
-                            <td>
-                            <!-- {{$cartItem->qty}} -->
-                            <form onsubmit="return confirm('Are you sure you want to update the quantity?')" action="{{route('cart.update',$cartItem->rowId)}}" method="post">
-                            @csrf
-                            @method('PUT')
-                            <input name="qty" type="text" value="{{$cartItem->qty}}"><br><br>
-                            <input style="float: left"  type="submit" class="btn btn-success" value="Update">
-                         
-                            </form>
+                           <td  width="50px">
+                                <form onsubmit="return confirm('Are you sure you want to update the quantity?')" action="{{route('cart.update',$cartItem->rowId)}}" method="post">
+                                @csrf
+                                @method('PUT')
+                                <input name="qty" type="text" value="{{$cartItem->qty}}"><br><br>
+                                <input style="float: left"  type="submit" class="btn btn-success" value="Update">
+                            
+                                </form>
                             
                             </td>
                            

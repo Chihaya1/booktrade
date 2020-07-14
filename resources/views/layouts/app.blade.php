@@ -66,9 +66,6 @@
                                     </form>
                                 </div>
                             </li>
-                            <li class="nav-item">
-                                    <a class="nav-link" href="/admin">Admin</a>
-                                </li>
                         @endguest
                     </ul>
                 </div>

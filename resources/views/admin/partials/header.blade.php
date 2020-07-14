@@ -4,14 +4,11 @@
 				<div class="col-md-4 logo-wrapper">
 					<a href="{{url('/home')}}"><img src="/img/logo.png" alt="logo" class="logo" /></a>
 				</div>
-				<div class="col-md-5 search-form">
-					<div class="input-group mt-1">
-						<input class="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search">
-						<div class="input-group-append">
-							<span class=""><i class="fa fa-search" aria-hidden="false"></i></span>
-						</div>
-					</div>
-				</div>
+				<form class="form-inline my-2 my-lg-0" action="{{url('/search')}}">
+				@csrf
+					<input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+				</form>
 				<div class="col-sm-2 scart">
 					<a href="{{route('cart.index')}}">
 					<i class="fa fa-shopping-cart"></i>
