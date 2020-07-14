@@ -19,6 +19,7 @@
                 <thead>
                 <tr>
                     <th>Title</th>
+                    <th>Email</th>
                     <th>Category</th>
                     <th>Author</th>
                     <th>Price</th>
@@ -29,7 +30,8 @@
                 <tbody>
                         @foreach($sells as $sell)
                             <tr>
-                                <td>{{ $sell->title }}</td>
+                                <td>{{ $sell->name }}</td>
+                                <td>{{ $sell->email }}</td>
                                 <td>{{ $sell->category}}</td>
                                 <td>{{ $sell->author }}</td>
                                 <td>{{ $sell->price }}</td>
@@ -44,7 +46,6 @@
                                 </td>
                             </tr>
                         @endforeach
-                    </form>
                 </tbody>
             </table> 
         </div>

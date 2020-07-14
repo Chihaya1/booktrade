@@ -30,7 +30,7 @@
                 <tbody>
                         @foreach($donates as $donate)
                             <tr>
-                                <td>{{ $donate->title }}</td>
+                                <td>{{ $donate->name }}</td>
                                 <td>{{ $donate->email }}</td>
                                 <td>{{ $donate->category }}</td>
                                 <td>{{ $donate->condition }}</td>

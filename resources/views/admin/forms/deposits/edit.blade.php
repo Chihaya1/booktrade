@@ -20,7 +20,7 @@
             </div>
             <div class="form-group col-md-6">
                 <label>Book name:</label>
-                <input value="{{ $deposit->title}}" class="form-control" name="title">
+                <input value="{{ $deposit->name}}" class="form-control" name="name">
                 {{$errors->first('title')}}
             </div>
             <div class="form-group col-md-6">

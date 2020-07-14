@@ -19,7 +19,7 @@
             </div>
             <div class="form-group col-md-6">
                 <label>Book name:</label>
-                <input type="text" class="form-control" name="title">
+                <input type="text" class="form-control" name="name">
                 {{$errors->first('title')}}
             </div>
             <div class="form-group col-md-6">

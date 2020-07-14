@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\DepositConfirm;
 use App\Deposit;
 use Illuminate\Http\Request;
 
@@ -40,7 +42,7 @@ class DepositController extends Controller
        
         $request->validate([
             'email'      => 'required|email|unique:deposits',
-            'title'      => 'required|max:255',
+            'name'      => 'required|max:255',
             'author'     => 'required',
             'condition'  => 'required',
             'price'      => 'required',
@@ -51,7 +53,7 @@ class DepositController extends Controller
         
         $imagename = $request->image->getClientOriginalName();
         $deposit->email = $request->email;
-        $deposit->title = $request->title;
+        $deposit->name = $request->name;
         $deposit->author = $request->author;
         $deposit->price = $request->price;
         $deposit->condition = $request->condition;
@@ -61,6 +63,7 @@ class DepositController extends Controller
         // return $request;
 
          $deposit->save();
+         Mail::to($deposit->email)->send(new DepositConfirm($deposit));
          return redirect()->route('deposits.index')->withStatus('Deposit added');
         
     }
@@ -99,7 +102,7 @@ class DepositController extends Controller
         
         $imagename = $request->image->getClientOriginalName();
         $deposit->email = $request->email;
-        $deposit->title = $request->title;
+        $deposit->name = $request->name;
         $deposit->author = $request->author;
         $deposit->price = $request->price;
         $deposit->condition = $request->condition;

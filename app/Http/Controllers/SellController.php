@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SellConfirm;
 use App\Sell;
 use Illuminate\Http\Request;
+
+
+
 
 class SellController extends Controller
 {
@@ -41,23 +47,28 @@ class SellController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'      => 'required|max:50',
+            'name'      => 'required|max:50',
+            'email'     => 'required',
             'category'   => 'required|max:50',
             'author'     =>'required',
             'price'      =>'required',
             'condition'  => 'required',
             
         ]);
+       
         $sell = new Sell;
-        $sell->title     = $request->title;
+        $sell->name      = $request->name;
+        $sell->email     = $request->email;
         $sell->category  = $request->category;
         $sell->author    = $request->author;
         $sell->price     = $request->price;
         $sell->condition = $request->condition;
 
+       
         //  return $request;
-
         $sell->save();
+        Mail::to($sell->email)->send(new SellConfirm($sell));
+       
         return redirect()->route('sells.index')->withStatus('Sell Added');
            
         
@@ -94,7 +105,8 @@ class SellController extends Controller
      */
     public function update(Request $request, Sell $sell)
     {
-        $sell->title     = $request->title;
+        $sell->name    = $request->name;
+        $sell->email    = $request->email;
         $sell->category  = $request->category;
         $sell->author    = $request->author;
         $sell->price     = $request->price;

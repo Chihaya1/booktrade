@@ -13,8 +13,13 @@
             @method('PUT')
             <div class="form-group col-md-6">
                 <label>Book name:</label>
-                <input value="{{ $sell->title }}" class="form-control" name="title">
+                <input value="{{ $sell->name}}" class="form-control" name="name">
                 {{$errors->first('title')}}
+            </div>
+            <div class="form-group col-md-6">
+                <label>Email</label>
+                <input value="{{ $sell->email}}" class="form-control" name="email">
+                {{$errors->first('email')}}
             </div>
             <div class="form-group col-md-6">
                 <label>Category</label>

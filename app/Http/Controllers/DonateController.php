@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\DonateConfirm;
 use App\Donate;
 use Illuminate\Http\Request;
 
@@ -43,7 +45,7 @@ class DonateController extends Controller
     {
         //validation
         $request->validate([
-            'title'             => 'required|max:50',
+            'name'             => 'required|max:50',
             'email'             =>'required|email|unique:donates',
             'category'          => 'required',
             'author'            => 'required',
@@ -54,7 +56,7 @@ class DonateController extends Controller
             
         ]);
         $donate = new Donate;
-        $donate->title          = $request->title;
+        $donate->name         = $request->name;
         $donate->email          = $request->email;
         $donate->author         = $request->author;
         $donate->category       = $request->category;
@@ -65,6 +67,7 @@ class DonateController extends Controller
 
         // return $request;
          $donate->save();
+         Mail::to($donate->email)->send(new DonateConfirm($donate));
          return redirect()->route('donates.index')->withStatus('Donate added');
     }
 
@@ -99,7 +102,7 @@ class DonateController extends Controller
      */
     public function update(Request $request, Donate $donate)
     {
-        $donate->title          = $request->title;
+        $donate->name         = $request->name;
         $donate->email          = $request->email;
         $donate->author         = $request->author;
         $donate->category       = $request->category;

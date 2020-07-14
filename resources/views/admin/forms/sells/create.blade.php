@@ -12,8 +12,13 @@
             @csrf
             <div class="form-group col-md-6">
                 <label>Book name:</label>
-                <input type="text" class="form-control" name="title">
+                <input type="text" class="form-control" name="name">
                 {{$errors->first('title')}}
+            </div>
+            <div class="form-group col-md-6">
+                <label>Email</label>
+                <input type="text" class="form-control" name="email">
+                {{$errors->first('email')}}
             </div>
             <div class="form-group col-md-6">
                 <label>Category</label>
